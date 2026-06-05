@@ -34,17 +34,45 @@ one-import swap works for every provider — `@spaturzu/sdk/anthropic`,
 
 ## SDKs
 
-| SDK | Package | Install | Docs |
-|-----|---------|---------|------|
-| **TypeScript / Node** | [`@spaturzu/sdk`](./typescript) | `pnpm add @spaturzu/sdk` | [README](./typescript/README.md) |
-| **Python** | [`spaturzu`](./python) | `pip install spaturzu` | [README](./python/README.md) |
-| **OpenClaw plugin** ⚠️ *experimental* | [`@spaturzu/openclaw`](./openclaw) | — | [README](./openclaw/README.md) |
+| SDK | Package | Docs |
+|-----|---------|------|
+| **TypeScript / Node** | [`@spaturzu/sdk`](./typescript) | [README](./typescript/README.md) |
+| **Python** | [`spaturzu`](./python) | [README](./python/README.md) |
+| **OpenClaw plugin** ⚠️ *experimental* | [`@spaturzu/openclaw`](./openclaw) | [README](./openclaw/README.md) |
 
 > ⚠️ **`@spaturzu/openclaw` is a work in progress** and not yet ready for
 > production use. APIs may change without notice.
 
 Both the TypeScript and Python SDKs treat the underlying provider clients as
 **optional dependencies** — install only the ones you actually call.
+
+## Installation
+
+The SDKs are distributed as downloadable artifacts from
+**https://spaturzu-sdk.superchiu.org** — they are not on npm / PyPI. Install
+straight from the artifact URL; the newest version is always listed on that
+page (bump the version in the commands below to match).
+
+**TypeScript / Node** — current version `0.1.3`:
+
+```bash
+npm install https://spaturzu-sdk.superchiu.org/sdks/ts/spaturzu-sdk-0.1.3.tgz
+# …then whichever provider clients you call (these are normal npm packages):
+npm install openai @anthropic-ai/sdk @aws-sdk/client-bedrock-runtime @google/genai @mistralai/mistralai
+```
+
+**Python** — current version `0.1.4`:
+
+```bash
+WHL=https://spaturzu-sdk.superchiu.org/sdks/python/spaturzu-0.1.4-py3-none-any.whl
+pip install "spaturzu @ $WHL"               # core
+pip install "spaturzu[openai] @ $WHL"       # with the OpenAI integration
+pip install "spaturzu[all] @ $WHL"          # every provider integration
+```
+
+Once installed, the package names are unchanged (`@spaturzu/sdk`, `spaturzu`),
+so every import in this README works as written. `pnpm` / `yarn` accept the
+same tarball URL.
 
 ## Documentation
 
