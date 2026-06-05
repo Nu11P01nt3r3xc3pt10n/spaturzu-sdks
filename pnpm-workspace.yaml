@@ -1,0 +1,5 @@
+packages:
+  - "typescript"
+  - "openclaw"
+# The Python SDK (./python) ships on its own toolchain (hatchling + PyPI) and
+# is intentionally not a pnpm workspace member.

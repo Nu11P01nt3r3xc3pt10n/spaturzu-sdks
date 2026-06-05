@@ -1,0 +1,22 @@
+{
+  // Self-contained base config for the SDK packages. Deliberately a standalone
+  // copy (not `extends`-ing the monorepo root tsconfig.base.json) so that this
+  // `sdks/` tree compiles on its own after `git subtree split -P sdks` into the
+  // public repo — where no parent config exists above this directory.
+  "compilerOptions": {
+    "target": "ES2023",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "lib": ["ES2023"],
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true,
+    "noUncheckedIndexedAccess": true,
+    "declaration": true,
+    "sourceMap": true
+  }
+}

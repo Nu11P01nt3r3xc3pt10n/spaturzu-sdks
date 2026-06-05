@@ -1,0 +1,45 @@
+[project]
+name = "spaturzu"
+version = "0.1.4"
+description = "Per-agent LLM cost attribution for Python"
+readme = "README.md"
+license = "MIT"
+authors = [{ name = "Superchiu Ltd" }]
+requires-python = ">=3.10"
+dependencies = [
+    # Sync + async HTTP in one package; pinned wide because we use a stable
+    # subset (Client.post, Response.status_code, Response.text).
+    "httpx>=0.27",
+]
+
+[project.optional-dependencies]
+# Customers install the integrations they actually use:
+#   pip install spaturzu[openai]
+#   pip install spaturzu[anthropic,tiktoken]
+#   pip install spaturzu[all]    # everything
+#
+# The wrappers tolerate the underlying client SDKs at any modern version —
+# we duck-type against `chat.completions.create` / `messages.create` rather
+# than importing the SDK class, so floor versions are conservative.
+all = ["tiktoken>=0.7", "openai>=1.50", "anthropic>=0.34", "boto3>=1.34", "google-genai>=0.3", "mistralai>=1.0"]
+anthropic = ["anthropic>=0.34"]
+bedrock = ["boto3>=1.34"]
+dev = ["pytest>=8.0", "pytest-asyncio>=0.23"]
+gemini = ["google-genai>=0.3"]
+mistral = ["mistralai>=1.0"]
+openai = ["openai>=1.50"]
+tiktoken = ["tiktoken>=0.7"]
+
+[project.scripts]
+spaturzu-smoke = "spaturzu.smoke:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/spaturzu"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]

@@ -1,0 +1,22 @@
+# Node
+node_modules/
+dist/
+coverage/
+.turbo/
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+build/
+.pytest_cache/
+
+# Build artifacts
+*.tgz
+*.whl
+
+# Misc
+.DS_Store
+*.log

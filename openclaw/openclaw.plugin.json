@@ -1,0 +1,43 @@
+{
+  "id": "spaturzu",
+  "name": "Spaturzu",
+  "description": "Meter LLM usage and enforce budget hard-caps via Spaturzu.",
+  "activation": {
+    "onStartup": true
+  },
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["apiKey"],
+    "properties": {
+      "apiKey": {
+        "type": "string",
+        "description": "Spaturzu project API key (spa_…)."
+      },
+      "baseUrl": {
+        "type": "string",
+        "format": "uri",
+        "default": "https://spaturzu-api.superchiu.org",
+        "description": "Spaturzu gateway base URL."
+      },
+      "agentPrefix": {
+        "type": "string",
+        "default": "openclaw",
+        "description": "Prefix prepended to ctx.agentId when forming the Spaturzu agent name. Empty string disables prefixing."
+      },
+      "enforceBudgets": {
+        "type": "boolean",
+        "default": true,
+        "description": "Register the before_agent_run gate that blocks turns on hard-cap budgets."
+      },
+      "tags": {
+        "type": "object",
+        "additionalProperties": {
+          "type": ["string", "number", "boolean"]
+        },
+        "default": {},
+        "description": "Static tags merged into every reported call (e.g. env, deployment)."
+      }
+    }
+  }
+}
