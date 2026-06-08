@@ -19,3 +19,5 @@ jobs:
         with:
           user: superchiu
           password: ${{ secrets.UPLOAD_KEY }}
+          packages-dir: python/dist/
+
