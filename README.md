@@ -48,26 +48,24 @@ Both the TypeScript and Python SDKs treat the underlying provider clients as
 
 ## Installation
 
-The SDKs are distributed as downloadable artifacts from
-**https://spaturzu-sdk.superchiu.org** — they are not on npm / PyPI. Install
-straight from the artifact URL; the newest version is always listed on that
-page (bump the version in the commands below to match).
+**Python** — published on PyPI as
+[`spaturzu`](https://pypi.org/project/spaturzu/) (Python 3.10+):
 
-**TypeScript / Node** — current version `0.1.3`:
+```bash
+pip install spaturzu                   # core
+pip install "spaturzu[openai]"         # with the OpenAI integration
+pip install "spaturzu[all]"            # every provider integration
+```
+
+**TypeScript / Node** — distributed as a tarball from
+**https://spaturzu-sdk.superchiu.org** (not on npm); the newest version is
+always listed on that page (bump the version below to match). Current version
+`0.1.3`:
 
 ```bash
 npm install https://spaturzu-sdk.superchiu.org/sdks/ts/spaturzu-sdk-0.1.3.tgz
 # …then whichever provider clients you call (these are normal npm packages):
 npm install openai @anthropic-ai/sdk @aws-sdk/client-bedrock-runtime @google/genai @mistralai/mistralai
-```
-
-**Python** — current version `0.1.4`:
-
-```bash
-WHL=https://spaturzu-sdk.superchiu.org/sdks/python/spaturzu-0.1.4-py3-none-any.whl
-pip install "spaturzu @ $WHL"               # core
-pip install "spaturzu[openai] @ $WHL"       # with the OpenAI integration
-pip install "spaturzu[all] @ $WHL"          # every provider integration
 ```
 
 Once installed, the package names are unchanged (`@spaturzu/sdk`, `spaturzu`),

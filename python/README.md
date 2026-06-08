@@ -3,17 +3,14 @@
 Per-agent LLM cost attribution + budget enforcement + cross-provider fallback for Python. Wraps your provider client (OpenAI, Anthropic, Bedrock, Gemini, Mistral) and emits a metering row to the spaturzu gateway on every call, with frame-based agent attribution and free-form tags.
 
 ```bash
-# Distributed as a wheel from https://spaturzu-sdk.superchiu.org (not on PyPI).
-# The newest version is listed there; this is the current one:
-WHL=https://spaturzu-sdk.superchiu.org/sdks/python/spaturzu-0.1.4-py3-none-any.whl
-
-pip install "spaturzu @ $WHL"                 # core
-pip install "spaturzu[openai] @ $WHL"         # + OpenAI integration
-pip install "spaturzu[anthropic] @ $WHL"      # + Anthropic
-pip install "spaturzu[bedrock] @ $WHL"        # + boto3 for Bedrock Converse
-pip install "spaturzu[gemini] @ $WHL"         # + google-genai
-pip install "spaturzu[mistral] @ $WHL"        # + mistralai
-pip install "spaturzu[all] @ $WHL"            # everything
+# Published on PyPI as `spaturzu` (Python 3.10+).
+pip install spaturzu                  # core
+pip install "spaturzu[openai]"        # + OpenAI integration
+pip install "spaturzu[anthropic]"     # + Anthropic
+pip install "spaturzu[bedrock]"       # + boto3 for Bedrock Converse
+pip install "spaturzu[gemini]"        # + google-genai
+pip install "spaturzu[mistral]"       # + mistralai
+pip install "spaturzu[all]"           # everything
 ```
 
 ## Quickstart
