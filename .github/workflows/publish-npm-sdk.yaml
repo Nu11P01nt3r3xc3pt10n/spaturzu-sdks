@@ -1,7 +1,7 @@
 name: publish-npm
 on:
-  release:
-    types: [published]
+  push:
+    tags: ['typescript-v*']      # e.g. typescript-v0.1.6 — publishes the Node SDK only
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -17,6 +17,12 @@ jobs:
         with:
           node-version: 22
           registry-url: https://registry.npmjs.org
+      - name: Verify tag matches package version
+        run: |
+          TAG_V="${GITHUB_REF_NAME#typescript-v}"
+          PKG_V="$(node -p "require('./package.json').version")"
+          test "$TAG_V" = "$PKG_V" \
+            || { echo "::error::tag $GITHUB_REF_NAME does not match package.json $PKG_V"; exit 1; }
       - run: npm install -g npm@latest   # trusted publishing needs npm >= 11.5.1
       - run: npm ci
       - run: npm run build

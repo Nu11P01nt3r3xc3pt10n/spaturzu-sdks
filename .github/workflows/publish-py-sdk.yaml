@@ -1,18 +1,24 @@
 name: publish-pypi
 on:
-  release:
-    types: [published]
+  push:
+    tags: ['python-v*']          # e.g. python-v0.1.6 — publishes the Python SDK only
 jobs:
   publish:
     runs-on: ubuntu-latest
     environment: pypi
     defaults:
       run:
-        working-directory: python  
+        working-directory: python
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with: { python-version: '3.12' }
+      - name: Verify tag matches pyproject version
+        run: |
+          TAG_V="${GITHUB_REF_NAME#python-v}"
+          PKG_V="$(grep -m1 '^version' pyproject.toml | sed -E 's/.*"([^"]+)".*/\1/')"
+          test "$TAG_V" = "$PKG_V" \
+            || { echo "::error::tag $GITHUB_REF_NAME does not match pyproject version $PKG_V"; exit 1; }
       - run: pip install build
       - run: python -m build           # builds sdist + wheel into dist/
       - uses: pypa/gh-action-pypi-publish@release/v1
@@ -20,4 +26,4 @@ jobs:
           user: __token__
           password: ${{ secrets.UPLOAD_KEY }}
           packages-dir: python/dist/
-
+          skip-existing: true          # re-runs are a no-op, not a hard failure
