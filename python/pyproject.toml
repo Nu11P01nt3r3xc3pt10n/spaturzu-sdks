@@ -1,6 +1,6 @@
 [project]
 name = "spaturzu"
-version = "0.1.5"
+version = "0.1.6"
 description = "Per-agent LLM cost attribution for Python"
 readme = "README.md"
 license = "MIT"
