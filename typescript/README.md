@@ -2,6 +2,8 @@
 
 Per-agent LLM cost attribution + budget enforcement + cross-provider fallback for Node.js. Wraps your provider client (OpenAI, Anthropic, Bedrock, Gemini, Mistral) and emits a metering row to the spaturzu gateway on every call, with frame-based agent attribution and free-form tags.
 
+Part of [**spaturzu**](https://spaturzu.superchiu.org) — full docs at <https://spaturzu.superchiu.org/docs>.
+
 ```bash
 # Published on npm as @spaturzu/sdk (ESM-only).
 npm install @spaturzu/sdk

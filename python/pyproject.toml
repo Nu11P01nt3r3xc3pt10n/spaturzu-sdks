@@ -12,6 +12,11 @@ dependencies = [
     "httpx>=0.27",
 ]
 
+[project.urls]
+Homepage = "https://spaturzu.superchiu.org"
+Documentation = "https://spaturzu.superchiu.org/docs"
+Repository = "https://github.com/Nu11P01nt3r3xc3pt10n/spaturzu-sdks"
+
 [project.optional-dependencies]
 # Customers install the integrations they actually use:
 #   pip install spaturzu[openai]
