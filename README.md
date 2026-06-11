@@ -57,20 +57,17 @@ pip install "spaturzu[openai]"         # with the OpenAI integration
 pip install "spaturzu[all]"            # every provider integration
 ```
 
-**TypeScript / Node** — distributed as a tarball from
-**https://spaturzu-sdk.superchiu.org** (not on npm); the newest version is
-always listed on that page (bump the version below to match). Current version
-`0.1.3`:
+**TypeScript / Node** — published on npm as
+[`@spaturzu/sdk`](https://www.npmjs.com/package/@spaturzu/sdk) (ESM-only):
 
 ```bash
-npm install https://spaturzu-sdk.superchiu.org/sdks/ts/spaturzu-sdk-0.1.3.tgz
+npm install @spaturzu/sdk
 # …then whichever provider clients you call (these are normal npm packages):
 npm install openai @anthropic-ai/sdk @aws-sdk/client-bedrock-runtime @google/genai @mistralai/mistralai
 ```
 
-Once installed, the package names are unchanged (`@spaturzu/sdk`, `spaturzu`),
-so every import in this README works as written. `pnpm` / `yarn` accept the
-same tarball URL.
+Once installed, every import in this README works as written. `pnpm` / `yarn`
+accept the same package name (`pnpm add @spaturzu/sdk`).
 
 ## Documentation
 
